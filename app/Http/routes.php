@@ -38,9 +38,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::post('addgame', 'GameController@addGame');
     
-    Route::get('deletegameform', 'GameController@deleteGameForm');
-    
-    Route::post('deletegame', 'GameController@deleteGame');
+    Route::post('deletegame/{id}/delete', 'GameController@deleteGame')->name('game.delete');
     
     Route::get('details/{gameId}/edit', 'GameController@editGame');
     

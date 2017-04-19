@@ -48,14 +48,12 @@ class GameController extends Controller
         return redirect('all');
     }
     
-    function deleteGameForm()
-    {
-        return view('game/deletegameform',['pageTitle'=>"Delete Game"]);
-    }
     
-    function deleteGame()
+    function deleteGame(Request $request, $id)
     {
-        
+        $game = Game::findorFail($id);
+        $game->delete();
+        return redirect('all');
     }
     
     function editGame()
