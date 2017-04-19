@@ -6,17 +6,22 @@
     </head>
     <body>
         @section('header')
-        <div class="container">
-        <div class="row">
-            <form class="navbar-form navbar-left" role="search">
-                <a href="{{route('game.addform')}}">Add a Game</a>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="{{route('game.all')}}">The Game Shop</a>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-        </div>
-        </div>
+                <a href="{{route('game.addform')}}">
+                    <button type="button" class="btn btn-default navbar-btn">Add a Game</button>
+                    </a>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                      </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </nav>
         @show
 
         <div class="container">
