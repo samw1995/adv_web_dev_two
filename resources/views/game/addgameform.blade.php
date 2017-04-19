@@ -22,6 +22,10 @@
                 <input type="text" name="name" id="name" value="{{old('name')}}">
             </div>
             <div>
+                <label for="developer">Developer:</label>
+                <input type="text" name="developer" id="developer" value="{{old('developer')}}">
+            </div>
+            <div>
                 <label for="picture">Upload a Image:</label>
                 <input type="text" name="picture" id="picture">
             </div>

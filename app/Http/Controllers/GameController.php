@@ -31,6 +31,7 @@ class GameController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'developer' => 'required',
             'picture' => 'required',
             'description' => 'required|max:2000',
             'price' => 'required|numeric|min:00.01',
@@ -38,6 +39,7 @@ class GameController extends Controller
         ]);
         $game = new Game();
         $game->name = $request->name;
+        $game->developer = $request->developer;
         $game->picture = $request->picture;
         $game->ageRating = $request->age;
         $game->description = $request->description;
