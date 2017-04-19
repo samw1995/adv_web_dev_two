@@ -67,13 +67,32 @@ class GameController extends Controller
         return redirect('all');
     }
     
-    function editGame()
+    function editGame($gameId)
     {
-        
+        $game = Game::find($gameId);
+        $platforms = Platform::all();
+        $genres = Genre::all();
+        return view('game/editform',['game' => $game,'platforms' => $platforms, 'genres' => $genres]);
     }
     
-    function updateGame()
+    function updateGame(Request $request, $gameId)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'developer' => 'required',
+            'picture' => 'required',
+            'description' => 'required|max:2000',
+            'price' => 'required|numeric|min:00.01',
+            'score' => 'required|integer|min:1|max:10'
+        ]);
         
+        $game = Game::find($gameId);
+        $platform = Platform::find($request->platform);
+        $game->platform()->associate($platform);   
+        $genre = Genre::find($request->genre);
+        $game->genre()->associate($genre);
+        $game->update($request->all());
+        
+        return redirect('all');
     }
 }

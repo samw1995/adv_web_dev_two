@@ -15,4 +15,5 @@ class Game extends Model
     {
         return $this->belongsTo('App\Genre');
     }
+    protected $fillable = ['name', 'developer', 'picture', 'ageRating','description','price','score','platform_id','genre_id', 'created_at', 'updated_at'];
 }

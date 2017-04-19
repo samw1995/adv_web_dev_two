@@ -18,8 +18,13 @@
         <form action="{{route('game.delete', [$game->id])}}" method="POST">
             {{ csrf_field() }}
             <input type="hidden" name="{{$game->id}}" value="{{$game->id}}">
-            <input type="submit" name="submitBtn" value="Buy">
+            <input class="btn btn-default navbar-btn" type="submit" name="submitBtn" value="Buy">
         </form>
+        
+        <a href="{{route('game.editform', [$game->id])}}">
+            <button type="button" class="btn btn-default navbar-btn">Edit</button>
+        </a>
+        
     </div>
 </div>
     @endsection

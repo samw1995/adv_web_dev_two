@@ -42,6 +42,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('details/{gameId}/edit', 'GameController@editGame')->name('game.editform');
     
+    Route::patch('game/{gameId}' , 'GameController@updateGame')->name('game.update');
+    
     
     
 });
