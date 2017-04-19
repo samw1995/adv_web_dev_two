@@ -26,6 +26,14 @@
                 <input type="text" name="developer" id="developer" value="{{old('developer')}}">
             </div>
             <div>
+                <label for="platform">Platform</label>
+                <select name="platform" id="platform">
+                    @foreach($platforms as $platform) 
+                    <option value="{{$platform->id}}">{{$platform->fullName}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
                 <label for="picture">Upload a Image:</label>
                 <input type="text" name="picture" id="picture">
             </div>
@@ -42,6 +50,14 @@
             <div>
                 <label for="description">Description</label>
                 <textarea name="description" id="description" cols="30" rows="4">{{old('description')}}</textarea>
+            </div>
+            <div>
+                <label for="genre">Genre</label>
+                <select name="genre" id="genre">
+                    @foreach($genres as $genre) 
+                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div>
                 <label for="price">Price</label>

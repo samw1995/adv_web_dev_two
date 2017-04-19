@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Game;
+use App\Platform;
+use App\Genre;
 
 class GameController extends Controller
 {
@@ -24,7 +26,9 @@ class GameController extends Controller
     
     function addGameForm()
     {
-        return view('game/addgameform',['pageTitle'=>"Add a Game"]);
+        $platforms = Platform::all();
+        $genres = Genre::all();
+        return view('game/addgameform',['pageTitle'=>"Add a Game",'platforms' => $platforms, 'genres' => $genres]);
     }
     
     function addGame(Request $request)
@@ -46,7 +50,12 @@ class GameController extends Controller
         $game->price = $request->price;
         $game->score = $request->score;
         
+        $platform = Platform::find($request->platform);
+        $game->platform()->associate($platform);   
+        $genre = Genre::find($request->genre);
+        $game->genre()->associate($genre);
         $game->save();
+        
         return redirect('all');
     }
     
