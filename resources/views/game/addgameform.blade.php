@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-md-4">
         <h1>Add a Game</h1>
-        <form action="{{url('addgame')}}" method="post">
+        <form action="{{route('game.add')}}" method="post">
             {{ csrf_field() }}
             <div>
                 <label for="name">Name:</label>

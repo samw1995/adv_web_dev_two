@@ -30,18 +30,18 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     
-    Route::get('all', 'GameController@index');
+    Route::get('all', 'GameController@index')->name('game.all');
     
-    Route::get('details/{gameId}', 'GameController@details');
+    Route::get('details/{gameId}', 'GameController@details')->name('game.details');
     
-    Route::get('addgameform', 'GameController@addGameForm');
+    Route::get('addgameform', 'GameController@addGameForm')->name('game.addform');
     
-    Route::post('addgame', 'GameController@addGame');
+    Route::post('addgame', 'GameController@addGame')->name('game.add');
     
     Route::post('deletegame/{id}/delete', 'GameController@deleteGame')->name('game.delete');
     
-    Route::get('details/{gameId}/edit', 'GameController@editGame');
+    Route::get('details/{gameId}/edit', 'GameController@editGame')->name('game.editform');
     
-    Route::patch('details{gameId}', 'GameController@updateGame');
+    Route::patch('details{gameId}', 'GameController@updateGame')->(game.edit);
     
 });

@@ -9,7 +9,7 @@
         <div class="container">
         <div class="row">
             <form class="navbar-form navbar-left" role="search">
-                <a href="{{url('addgameform')}}">Add a Game</a>
+                <a href="{{route('game.addform')}}">Add a Game</a>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>

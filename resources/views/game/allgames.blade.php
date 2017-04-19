@@ -10,7 +10,7 @@
         @foreach ($games as $game)
             
             <p>
-                <a href="{{url('details/'.$game->id)}}">{{$game->name}}</a>
+                <a href="{{route('game.details', [$game->id])}}">{{$game->name}}</a>
                 </p>
                 @endforeach
          
