@@ -14,7 +14,7 @@ class AddGenreIdToGamesTable extends Migration
     {
         Schema::table('games', function (Blueprint $table) {
             $table->integer('genre_id')->unsigned();
-            $table->foreign('genre_id')->references('id')->on('genre')->onDelete('cascade');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
         });
     }
 

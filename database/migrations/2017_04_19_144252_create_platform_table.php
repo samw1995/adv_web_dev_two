@@ -12,7 +12,7 @@ class CreatePlatformTable extends Migration
      */
     public function up()
     {
-        Schema::create('platform', function (Blueprint $table) {
+        Schema::create('platforms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fullName');
             $table->string('shortName');
@@ -27,6 +27,6 @@ class CreatePlatformTable extends Migration
      */
     public function down()
     {
-        Schema::drop('platform');
+        Schema::drop('platforms');
     }
 }

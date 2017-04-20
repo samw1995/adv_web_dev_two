@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPlatformIdToGamesTable extends Migration
+class AddUserToGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPlatformIdToGamesTable extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->integer('platform_id')->unsigned();
-            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,8 +26,8 @@ class AddPlatformIdToGamesTable extends Migration
     public function down()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->dropForeign('games_platform_id_foreign');
-            $table->dropColumn('platform_id');
+            $table->dropForeign('games_user_id_foreign');
+            $table->dropColumn('user_id');
         });
     }
 }

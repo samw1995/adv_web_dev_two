@@ -9,13 +9,24 @@ use App\Http\Requests;
 use App\Game;
 use App\Platform;
 use App\Genre;
+use App\User;
 
 class GameController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
     function index()
     {
         $games = Game::all();
         return view('game/allgames',['games' => $games]);
+    }
+    
+    function userGames()
+    {
+        $games = Game::all();
+        return view('game/usergames',['games' => $games]);
     }
     
     function details($gameId)
@@ -54,6 +65,8 @@ class GameController extends Controller
         $game->platform()->associate($platform);   
         $genre = Genre::find($request->genre);
         $game->genre()->associate($genre);
+        $user = User::find($request->user);
+        $game->user()->associate($user);
         $game->save();
         
         return redirect('all');

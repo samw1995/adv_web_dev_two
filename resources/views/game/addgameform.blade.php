@@ -3,6 +3,9 @@
 @section('title', 'Add a Game')
 
 @section('content')
+
+@if(Auth::check())
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -67,8 +70,18 @@
                 <label for="score">Score</label>
                 <input type="number" name="score" id="score" min="1" max="10" value="{{old('score')}}">
             </div>
+            <div >
+           
+                <p class="userId">{{$userId = Auth::id()}}</p>
+                <input type="hidden" name="user" id="user" value="{{$userId}}">
+            </div>
+            
                 <input type="submit" name="submitBtn" value="Add Game">
         </form>
     </div>
 </div>
+@else
+<p>Please <a href="{{url('login')}}">Log In</a></p>
+@endif
+
     @endsection

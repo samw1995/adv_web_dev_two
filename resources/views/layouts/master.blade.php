@@ -7,20 +7,30 @@
     <body>
         @section('header')
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="navbar-header">
                   <a class="navbar-brand" href="{{route('game.all')}}">The Game Shop</a>
                 </div>
                 <a href="{{route('game.addform')}}">
                     <button type="button" class="btn btn-default navbar-btn">Add a Game</button>
                     </a>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                
+                @if(Auth::check())
+                 <a href="{{route('user.logout')}}">
+                    <button type="button" class="btn btn-default navbar-btn">Sign Out</button>
+                    </a>
+                {{$user = Auth::user()}}
+                <p>Hello <a href="{{route('user.usergames')}}">{{$user->name}}</a></p>
+                @else
+                <a href="{{url('login')}}">
+                    <button type="button" class="btn btn-default navbar-btn">Sign In</button>
+                    </a>
+                <a href="{{url('register')}}">
+                    <button type="button" class="btn btn-default navbar-btn">Sign Up</button>
+                    </a>
+                @endif
             </div>
+           
         </nav>
         @show
 

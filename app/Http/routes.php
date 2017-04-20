@@ -32,6 +32,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('all', 'GameController@index')->name('game.all');
     
+    Route::get('usergames', 'GameController@userGames')->name('user.usergames');
+    
     Route::get('details/{gameId}', 'GameController@details')->name('game.details');
     
     Route::get('addgameform', 'GameController@addGameForm')->name('game.addform');
@@ -44,6 +46,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::patch('game/{gameId}' , 'GameController@updateGame')->name('game.update');
     
+    Route::auth();
     
+    Route::get('logout','Auth\AuthController@logout')->name('user.logout');
     
 });
