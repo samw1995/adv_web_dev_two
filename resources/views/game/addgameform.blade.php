@@ -18,7 +18,8 @@
 <div class="row">
     <div class="col-md-4">
         <h1>Add a Game</h1>
-        <form action="{{route('game.add')}}" method="post">
+    
+        <form action="{{route('game.add')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div>
                 <label for="name">Name:</label>
@@ -38,7 +39,7 @@
             </div>
             <div>
                 <label for="picture">Upload a Image:</label>
-                <input type="text" name="picture" id="picture">
+                <input type="file" name="picture" id="picture">
             </div>
             <div>
                 <label for="age">Age Rating</label>

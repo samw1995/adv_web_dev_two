@@ -11,7 +11,7 @@
         <p>{{$game->platform->fullName}}</p>
         <p>Rated {{$game->ageRating}}+</p>
         <p>£{{$game->price}}</p>
-        <p>{{$game->picture}} will go here</p>
+        <img src=" {{asset('images/'. $game->picture)}}">
         <p>{{$game->description}}</p>
         <p>{{$game->genre->name}}</p>
         <p>{{$game->score}}</p>

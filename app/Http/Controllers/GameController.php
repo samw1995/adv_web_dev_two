@@ -57,7 +57,18 @@ class GameController extends Controller
         $game = new Game();
         $game->name = $request->name;
         $game->developer = $request->developer;
-        $game->picture = $request->picture;
+        
+        if($request->hasFile('picture'))
+        {   
+            $file = $request->file('picture');
+            $image_name = $file->getClientOriginalName();
+            $file->move(public_path().'/images/', $image_name);
+            $game->picture = $image_name;
+        }
+        else{
+            return redirect('usergames');
+        }
+        
         $game->ageRating = $request->age;
         $game->description = $request->description;
         $game->price = $request->price;
