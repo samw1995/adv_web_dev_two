@@ -65,9 +65,7 @@ class GameController extends Controller
             $file->move(public_path().'/images/', $image_name);
             $game->picture = $image_name;
         }
-        else{
-            return redirect('usergames');
-        }
+        
         
         $game->ageRating = $request->age;
         $game->description = $request->description;
