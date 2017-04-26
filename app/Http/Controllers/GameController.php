@@ -17,10 +17,12 @@ class GameController extends Controller
 //    {
 //        $this->middleware('auth');
 //    }
-    function index()
-    {
-        $games = Game::all();
-        return view('game/allgames',['games' => $games]);
+    function index(Request $request)
+   {
+        $query = $request->searchTerm;
+        
+        $games = $query ? Game::search($query)->get() : Game::all();
+        return view('game/allgames', compact('games'));
     }
     
     function userGames()
@@ -109,3 +111,8 @@ class GameController extends Controller
         return redirect('all');
     }
 }
+//
+// {
+//        $games = Game::all();
+//        return view('game/allgames',['games' => $games]);
+//    }

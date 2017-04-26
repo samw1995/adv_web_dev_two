@@ -19,5 +19,11 @@ class Game extends Model
     {
         return $this->belongsTo('App\User');
     }
+     public function scopeSearch($query, $searchTerm)
+   {
+     $query->where('name', 'LIKE', "%$searchTerm%");             
+   }
+    
     protected $fillable = ['name', 'developer', 'picture', 'ageRating','description','price','score','platform_id','genre_id', 'created_at', 'updated_at'];
 }
+

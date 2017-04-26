@@ -11,6 +11,14 @@
                 <div class="navbar-header">
                   <a class="navbar-brand" href="{{route('game.all')}}">The Game Shop</a>
                 </div>
+                <form class="navbar-form navbar-left" role="search" action="{{route('game.all')}}" method="get">
+                
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="searchTerm" id="searchTerm">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+
                 <a href="{{route('game.addform')}}">
                     <button type="button" class="btn btn-default navbar-btn">Add a Game</button>
                     </a>
@@ -19,8 +27,7 @@
                  <a href="{{route('user.logout')}}">
                     <button type="button" class="btn btn-default navbar-btn">Sign Out</button>
                     </a>
-                {{$user = Auth::user()}}
-                <p>Hello <a href="{{route('user.usergames')}}">{{$user->name}}</a></p>
+                <p>Hello <a href="{{route('user.usergames')}}">{{Auth::user()->name}}</a></p>
                 @else
                 <a href="{{url('login')}}">
                     <button type="button" class="btn btn-default navbar-btn">Sign In</button>
